@@ -25,7 +25,9 @@ async function main() {
             res.statusCode = 200
             res.write(pageContent)
             res.end()
-        }).listen(8080)
+        }).listen(8080, () => {
+            console.log('Server running on port 8080')
+        })
     } catch (error) {
         console.log(error)
     }
