@@ -47,9 +47,12 @@ async function main() {
 
         const PORT = process.env.PORT || 8080
 
-        app.get('/', (req, res) => {
-            res.send(index)
-        })
+        app.get('/', (req, res) => res.send(index))
+        app.get('/about', (req, res) => res.send(about))
+        app.get('/contact', (req, res) => res.send(contact))
+        app.use((req, res) => res.send(notFound))
+
+        
 
         app.listen(PORT, (error) => {
             if(error) {
