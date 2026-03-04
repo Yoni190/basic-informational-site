@@ -37,21 +37,30 @@ const app = express()
 
 // main()
 
-const index = await fs.readFile('index.html', { encoding: 'utf8' })
-const about = await fs.readFile('about.html', { encoding: 'utf8' })
-const contact = await fs.readFile('contact-me.html', { encoding: 'utf8' })
-const notFound = await fs.readFile('404.html', { encoding: 'utf8' })
 
-const PORT = process.env.PORT || 8080
+async function main() {
+    try {
+        const index = await fs.readFile('index.html', { encoding: 'utf8' })
+        const about = await fs.readFile('about.html', { encoding: 'utf8' })
+        const contact = await fs.readFile('contact-me.html', { encoding: 'utf8' })
+        const notFound = await fs.readFile('404.html', { encoding: 'utf8' })
 
-app.get('/', (req, res) => {
-    res.send(index)
-})
+        const PORT = process.env.PORT || 8080
 
-app.listen(PORT, (error) => {
-    if(error) {
-        throw error
+        app.get('/', (req, res) => {
+            res.send(index)
+        })
+
+        app.listen(PORT, (error) => {
+            if(error) {
+                throw error
+            }
+
+            console.log(`Server listening on port ${PORT}`)
+        })
+    } catch (error) {
+        console.log(error)
     }
+}
 
-    console.log(`Server listening on port ${PORT}`)
-})
+main()
