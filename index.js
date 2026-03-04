@@ -40,10 +40,10 @@ const app = express()
 
 async function main() {
     try {
-        const index = await fs.readFile('index.html', { encoding: 'utf8' })
-        const about = await fs.readFile('about.html', { encoding: 'utf8' })
-        const contact = await fs.readFile('contact-me.html', { encoding: 'utf8' })
-        const notFound = await fs.readFile('404.html', { encoding: 'utf8' })
+        const index = await fs.readFile('./pages/index.html', { encoding: 'utf8' })
+        const about = await fs.readFile('./pages/about.html', { encoding: 'utf8' })
+        const contact = await fs.readFile('./pages/contact-me.html', { encoding: 'utf8' })
+        const notFound = await fs.readFile('./pages/404.html', { encoding: 'utf8' })
 
         const PORT = process.env.PORT || 8080
 
